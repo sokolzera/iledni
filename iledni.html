@@ -7,12 +7,21 @@
     <title>Ile dni minelo</title>
 </head>
 <body>
-	<div>Data :
+	<div> Aktualna data i godzina:
+        <input type="text" id="aktualne" readonly>
+    </div>
+
+    <div>Data :
     <input type="date" id="czas"> 
-        <div>
-    <button onclick="oblicz()" > Ile uplynelo</button>
+    <div>
+    <button onclick="oblicz()" > Ile uplynelo dni </button>
     <label for="result"></label>
-        <input type="result" id="result" readonly>
+     <input type="text" id="result" readonly>
+    </div>
+    <div>
+        <button onclick="oblicz1()" > Ile uplynelo godzin </button>
+        <label for="godz"></label>
+        <input type="text" id="godz" readonly>
     </div>
     </div>
     <script>
@@ -21,7 +30,20 @@
         var czas1 = document.getElementById("czas").valueAsDate; 
         var diff = Math.floor((teraz.getTime() - czas1.getTime()) / 86400000);
         document.getElementById("result").value = diff
+    } 
+    function oblicz1() {
+        var teraz = new Date();
+        var czas1 = document.getElementById("czas").valueAsDate; 
+        var diff = Math.floor((teraz.getTime() - czas1.getTime()) / 3600000);
+        document.getElementById("godz").value = diff
     }
+    var teraz = new Date();
+    var date = teraz.getDate()+'-'+(teraz.getMonth()+1)+'-'+teraz.getFullYear();
+    var time = teraz.getHours() + ":" + teraz.getMinutes() + ":" + teraz.getSeconds();
+    var dateTime = date+' '+time;
+    document.getElementById("aktualne").value = dateTime
+
+    
     </script>
     
 </div>
